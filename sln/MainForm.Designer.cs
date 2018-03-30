@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonDoExperiments = new System.Windows.Forms.Button();
@@ -54,6 +59,8 @@
             this.D_S2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Me = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chartGist = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartF = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -61,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableStat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartF)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -149,7 +158,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(491, 464);
             this.tabControl1.TabIndex = 0;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.StatChar_click);
             // 
             // tabPage1
             // 
@@ -165,6 +173,7 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Моделирование";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // buttonReset
             // 
@@ -218,6 +227,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.chartF);
+            this.tabPage2.Controls.Add(this.chartGist);
             this.tabPage2.Controls.Add(this.tableStat);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -226,6 +237,7 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Статистические характеристики";
             this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // tableStat
             // 
@@ -292,6 +304,37 @@
             this.R.Name = "R";
             this.R.ReadOnly = true;
             // 
+            // chartGist
+            // 
+            chartArea7.Name = "ChartArea1";
+            this.chartGist.ChartAreas.Add(chartArea7);
+            this.chartGist.Location = new System.Drawing.Point(18, 247);
+            this.chartGist.Name = "chartGist";
+            series10.ChartArea = "ChartArea1";
+            series10.Name = "Series1";
+            this.chartGist.Series.Add(series10);
+            this.chartGist.Size = new System.Drawing.Size(452, 172);
+            this.chartGist.TabIndex = 2;
+            // 
+            // chartF
+            // 
+            chartArea8.Name = "ChartArea1";
+            this.chartF.ChartAreas.Add(chartArea8);
+            this.chartF.Location = new System.Drawing.Point(14, 88);
+            this.chartF.Name = "chartF";
+            this.chartF.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series11.Name = "Series1";
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Name = "Series2";
+            this.chartF.Series.Add(series11);
+            this.chartF.Series.Add(series12);
+            this.chartF.Size = new System.Drawing.Size(455, 154);
+            this.chartF.TabIndex = 3;
+            this.chartF.Text = "chart1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,6 +355,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableStat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartF)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,5 +389,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn D_S2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Me;
         private System.Windows.Forms.DataGridViewTextBoxColumn R;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGist;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartF;
     }
 }

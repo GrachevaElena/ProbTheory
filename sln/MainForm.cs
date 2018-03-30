@@ -105,7 +105,7 @@ namespace ProbTheory
         {
             if (!CheckLambda()) return;
             double res=MakeExperiment();
-            model.listRes.Sort();
+            model.Sort();
             labelNumExperiments.Text = model.listRes.Count.ToString();
             AddToTable();
         }
@@ -125,15 +125,20 @@ namespace ProbTheory
             {
                 double res = MakeExperiment();
             }
-            model.listRes.Sort();
-            if (tabControl1.SelectedIndex == 0)
-            {
-                labelNumExperiments.Text = model.listRes.Count.ToString();
-                CreateTable();
-            }
+            model.Sort();
+
+            ReloadTab1();
+            ReloadTab2();
+        }
+        
+        private void ReloadTab1()
+        {
+            labelNumExperiments.Text = model.listRes.Count.ToString();
+            CreateTable();
         }
 
-        private void StatChar_click(object sender, EventArgs e)
+
+        private void ReloadTab2()
         {
             if (model.listRes.Count == 0) return;
             tableStat[0, 0].Value = model.GetE().ToString();
@@ -144,6 +149,59 @@ namespace ProbTheory
             tableStat[4, 0].Value = model.GetS2().ToString();
             tableStat[5, 0].Value = Math.Abs(model.GetD() - model.GetS2()).ToString();
             tableStat[2, 0].Value = Math.Abs(model.GetE() - model.GetXCh()).ToString();
+
+            CreateGist();
+            CreateF();
+        }
+
+        void CreateGist()
+        {
+            int m = 100, n = model.listRes.Count;
+            model.Sort();
+            double delta = (model.listRes[n - 1] - model.listRes[0]) / m;
+            int[] arr = new int[m];
+            int j = 0;
+            for (int i = 0; i < m; i++)
+                while (j < n && model.listRes[j] < (i + 1) * delta)
+                {
+                    arr[i]++;
+                    j++;
+                }
+            double[] y = new double[m], x = new double[m];
+            for (int i = 0; i < m; i++)
+            {
+                x[i] = i * delta;
+                y[i] = arr[i] / (n * delta);
+            }
+            chartGist.Series[0].Points.DataBindXY(x, y);
+        }
+
+        void CreateF()
+        {
+            int m = 1000;
+            double minExp=0.001;
+            double xMax = -Math.Log(minExp) / model.Lambda;
+            double delta = (xMax - 0) / m;
+            double[] yF= new double[m], yFCh=new double[m], x = new double[m];
+            for (int i = 0; i < m; i++)
+            {
+                x[i] = i * delta;
+                yF[i] = model.GetF(x[i]);
+                yFCh[i] = model.GetFCh(x[i]);
+            }
+            chartF.ChartAreas[0].AxisY.Title = "F";
+            chartF.Series[0].Points.DataBindXY(x, yF);
+            chartF.Series[1].Points.DataBindXY(x, yFCh);
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+            ReloadTab2();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+            ReloadTab1();
         }
     }
 }

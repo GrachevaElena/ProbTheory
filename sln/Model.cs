@@ -8,7 +8,7 @@ namespace ProbTheory
     public class Model
     {
         Random rnd = new Random();
-        double Lambda;
+        public double Lambda;
         public List<double> listRes=new List<double>();
 
         public Model(double l)
@@ -23,6 +23,11 @@ namespace ProbTheory
             return r;
         }
 
+        public void Sort()
+        {
+            listRes.Sort();
+        }
+
         public double GetE()
         {
             return 1 / Lambda;
@@ -30,7 +35,7 @@ namespace ProbTheory
 
         public double GetD()
         {
-            return 0;
+            return 1/(Lambda*Lambda);
         }
 
 
@@ -61,6 +66,27 @@ namespace ProbTheory
             if (listRes.Count % 2 == 1)
                 return listRes[listRes.Count / 2 + 1];
             return (listRes[listRes.Count / 2] + listRes[listRes.Count / 2 + 1]) / 2;
+        }
+
+        public double GetF(double x)
+        {
+            return 1 - Math.Exp(-Lambda * x);
+        }
+
+        public double GetFCh(double x)
+        {
+            double s = 0;
+            for (int i = 0; (i<listRes.Count)&&(listRes[i] < x); i++)
+                s += 1;
+            return s/listRes.Count;
+        }
+
+        public double GetDF()
+        {
+            double max = 0;
+            for (int i = 0; i < listRes.Count; i++)
+                max = Math.Max(max, Math.Abs(GetFCh(listRes[i]) - GetF(listRes[i])));
+            return max;
         }
     }
 }
