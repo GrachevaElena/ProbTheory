@@ -140,26 +140,28 @@ namespace ProbTheory
 
         private void ReloadTab2()
         {
-            if (model.listRes.Count == 0) return;
-            tableStat[0, 0].Value = model.GetE().ToString();
-            tableStat[3, 0].Value = model.GetD().ToString();
-            tableStat[7, 0].Value = model.GetR().ToString();
-            tableStat[6, 0].Value = model.GetMe().ToString();
-            tableStat[1, 0].Value = model.GetXCh().ToString();
-            tableStat[4, 0].Value = model.GetS2().ToString();
-            tableStat[5, 0].Value = Math.Abs(model.GetD() - model.GetS2()).ToString();
-            tableStat[2, 0].Value = Math.Abs(model.GetE() - model.GetXCh()).ToString();
+            double divf = CreateGist();
+            double divF = CreateF();
 
-            CreateGist();
-            CreateF();
+            if (model.listRes.Count == 0) return;
+            tableStat[0, 0].Value = divF;
+            tableStat[1, 0].Value = divf;
+            tableStat[2, 0].Value = model.GetE().ToString();
+            tableStat[5, 0].Value = model.GetD().ToString();
+            tableStat[9, 0].Value = model.GetR().ToString();
+            tableStat[8, 0].Value = model.GetMe().ToString();
+            tableStat[3, 0].Value = model.GetXCh().ToString();
+            tableStat[6, 0].Value = model.GetS2().ToString();
+            tableStat[7, 0].Value = Math.Abs(model.GetD() - model.GetS2()).ToString();
+            tableStat[4, 0].Value = Math.Abs(model.GetE() - model.GetXCh()).ToString();
         }
 
-        void CreateGist()
+        double CreateGist()
         {
             int m = 100, n = model.listRes.Count;
             model.Sort();
             double delta = (model.listRes[n - 1] - model.listRes[0]) / m;
-            int[] arr = new int[m];
+            int[] arr = new int[m+1];
             int j = 0;
             for (int i = 0; i < m; i++)
                 while (j < n && model.listRes[j] < (i + 1) * delta)
@@ -167,18 +169,20 @@ namespace ProbTheory
                     arr[i]++;
                     j++;
                 }
-            double[] y = new double[m], x = new double[m];
-            for (int i = 0; i < m; i++)
+            arr[m]=1;
+            double[] y = new double[m+1], x = new double[m+1];
+            for (int i = 0; i < m+1; i++)
             {
                 x[i] = i * delta;
                 y[i] = arr[i] / (n * delta);
             }
             chartGist.Series[0].Points.DataBindXY(x, y);
+            return CalcDivf(x, y, m+1);
         }
 
-        void CreateF()
+        double CreateF()
         {
-            int m = 1000;
+            int m = 10000;
             double minExp=0.001;
             double xMax = -Math.Log(minExp) / model.Lambda;
             double delta = (xMax - 0) / m;
@@ -192,6 +196,7 @@ namespace ProbTheory
             chartF.ChartAreas[0].AxisY.Title = "F";
             chartF.Series[0].Points.DataBindXY(x, yF);
             chartF.Series[1].Points.DataBindXY(x, yFCh);
+            return CalcDivF(yF, yFCh, m);
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
@@ -203,5 +208,25 @@ namespace ProbTheory
         {
             ReloadTab1();
         }
+
+        private double CalcDivF(double[] yF, double[] yFCh, int n)
+        {
+            double max=0;
+            for (int i=0; i<n; i++)
+                max=Math.Max(max, Math.Abs(yF[i]-yFCh[i]));
+            return max;
+        }
+
+        private double CalcDivf(double[] x, double[] fCh, int n)
+        {
+            double max = 0;
+            for (int i = 0; i < n; i++)
+            {
+                double f = model.Getf(x[i]);
+                max = Math.Max(max, Math.Abs(f-fCh[i]));
+            }
+            return max;
+        }
+
     }
 }

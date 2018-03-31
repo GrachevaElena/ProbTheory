@@ -1,0 +1,8 @@
+Z:\ProbTheory\sln\bin\Debug\WindowsApplication.exe
+Z:\ProbTheory\sln\bin\Debug\WindowsApplication.pdb
+Z:\ProbTheory\sln\obj\x86\Debug\ProbTheory.csprojResolveAssemblyReference.cache
+Z:\ProbTheory\sln\obj\x86\Debug\ProbTheory.MainForm.resources
+Z:\ProbTheory\sln\obj\x86\Debug\ProbTheory.Properties.Resources.resources
+Z:\ProbTheory\sln\obj\x86\Debug\ProbTheory.csproj.GenerateResource.Cache
+Z:\ProbTheory\sln\obj\x86\Debug\WindowsApplication.exe
+Z:\ProbTheory\sln\obj\x86\Debug\WindowsApplication.pdb

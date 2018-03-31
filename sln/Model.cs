@@ -70,6 +70,7 @@ namespace ProbTheory
 
         public double GetF(double x)
         {
+            if (x < 0) return 0;
             return 1 - Math.Exp(-Lambda * x);
         }
 
@@ -81,12 +82,10 @@ namespace ProbTheory
             return s/listRes.Count;
         }
 
-        public double GetDF()
+        public double Getf(double x)
         {
-            double max = 0;
-            for (int i = 0; i < listRes.Count; i++)
-                max = Math.Max(max, Math.Abs(GetFCh(listRes[i]) - GetF(listRes[i])));
-            return max;
+            if (x < 0) return 0;
+            return Lambda*Math.Exp(-Lambda*x);
         }
     }
 }

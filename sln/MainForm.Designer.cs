@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonDoExperiments = new System.Windows.Forms.Button();
@@ -50,7 +50,11 @@
             this.table = new System.Windows.Forms.DataGridView();
             this.buttonExperiment = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chartF = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartGist = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableStat = new System.Windows.Forms.DataGridView();
+            this.DF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Divf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.E = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.XCh = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.E_XCh = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,17 +63,15 @@
             this.D_S2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Me = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chartGist = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartF = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tableStat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartGist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartF)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGist)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableStat)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -239,10 +241,43 @@
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // chartF
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chartF.ChartAreas.Add(chartArea1);
+            this.chartF.Location = new System.Drawing.Point(14, 88);
+            this.chartF.Name = "chartF";
+            this.chartF.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Name = "Series2";
+            this.chartF.Series.Add(series1);
+            this.chartF.Series.Add(series2);
+            this.chartF.Size = new System.Drawing.Size(455, 154);
+            this.chartF.TabIndex = 3;
+            this.chartF.Text = "chart1";
+            // 
+            // chartGist
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartGist.ChartAreas.Add(chartArea2);
+            this.chartGist.Location = new System.Drawing.Point(18, 247);
+            this.chartGist.Name = "chartGist";
+            series3.ChartArea = "ChartArea1";
+            series3.Name = "Series1";
+            this.chartGist.Series.Add(series3);
+            this.chartGist.Size = new System.Drawing.Size(452, 172);
+            this.chartGist.TabIndex = 2;
+            // 
             // tableStat
             // 
             this.tableStat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableStat.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DF,
+            this.Divf,
             this.E,
             this.XCh,
             this.E_XCh,
@@ -255,6 +290,18 @@
             this.tableStat.Name = "tableStat";
             this.tableStat.Size = new System.Drawing.Size(458, 67);
             this.tableStat.TabIndex = 1;
+            // 
+            // DF
+            // 
+            this.DF.HeaderText = "Divergence F";
+            this.DF.Name = "DF";
+            this.DF.ReadOnly = true;
+            // 
+            // Divf
+            // 
+            this.Divf.HeaderText = "Divergence f";
+            this.Divf.Name = "Divf";
+            this.Divf.ReadOnly = true;
             // 
             // E
             // 
@@ -304,37 +351,6 @@
             this.R.Name = "R";
             this.R.ReadOnly = true;
             // 
-            // chartGist
-            // 
-            chartArea7.Name = "ChartArea1";
-            this.chartGist.ChartAreas.Add(chartArea7);
-            this.chartGist.Location = new System.Drawing.Point(18, 247);
-            this.chartGist.Name = "chartGist";
-            series10.ChartArea = "ChartArea1";
-            series10.Name = "Series1";
-            this.chartGist.Series.Add(series10);
-            this.chartGist.Size = new System.Drawing.Size(452, 172);
-            this.chartGist.TabIndex = 2;
-            // 
-            // chartF
-            // 
-            chartArea8.Name = "ChartArea1";
-            this.chartF.ChartAreas.Add(chartArea8);
-            this.chartF.Location = new System.Drawing.Point(14, 88);
-            this.chartF.Name = "chartF";
-            this.chartF.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Name = "Series1";
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Name = "Series2";
-            this.chartF.Series.Add(series11);
-            this.chartF.Series.Add(series12);
-            this.chartF.Size = new System.Drawing.Size(455, 154);
-            this.chartF.TabIndex = 3;
-            this.chartF.Text = "chart1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,9 +370,9 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tableStat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartGist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartF)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartGist)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableStat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,6 +397,10 @@
         private System.Windows.Forms.Button buttonDoExperiments;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView tableStat;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartGist;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Divf;
         private System.Windows.Forms.DataGridViewTextBoxColumn E;
         private System.Windows.Forms.DataGridViewTextBoxColumn XCh;
         private System.Windows.Forms.DataGridViewTextBoxColumn E_XCh;
@@ -389,7 +409,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn D_S2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Me;
         private System.Windows.Forms.DataGridViewTextBoxColumn R;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartGist;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartF;
     }
 }
