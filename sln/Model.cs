@@ -63,9 +63,10 @@ namespace ProbTheory
 
         public double GetMe()
         {
+		if (listRes.Count<=0) return 0;
             if (listRes.Count % 2 == 1)
-                return listRes[listRes.Count / 2 + 1];
-            return (listRes[listRes.Count / 2] + listRes[listRes.Count / 2 + 1]) / 2;
+                return listRes[listRes.Count / 2];
+            return (listRes[listRes.Count / 2-1] + listRes[listRes.Count / 2]) / 2;
         }
 
         public double GetF(double x)
