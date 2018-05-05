@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ProbTheory
 {
-    public class Model
+    public class ModelRandom
     {
         Random rnd = new Random();
         public double Lambda;
         public List<double> listRes=new List<double>();
 
-        public Model(double l)
+        public ModelRandom(double l)
         {
             Lambda = l;
         }

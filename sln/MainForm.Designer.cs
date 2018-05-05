@@ -50,6 +50,9 @@
             this.table = new System.Windows.Forms.DataGridView();
             this.buttonExperiment = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonCalcGist = new System.Windows.Forms.Button();
+            this.textBoxKGist = new System.Windows.Forms.TextBox();
+            this.labelKGist = new System.Windows.Forms.Label();
             this.chartF = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartGist = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableStat = new System.Windows.Forms.DataGridView();
@@ -63,6 +66,18 @@
             this.D_S2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Me = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonCheckGip = new System.Windows.Forms.Button();
+            this.labelAccept = new System.Windows.Forms.Label();
+            this.labelFR0 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tableQ = new System.Windows.Forms.DataGridView();
+            this.textBoxAlpha = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxKHyp = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.labelR0 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -72,6 +87,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartF)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartGist)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableStat)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tableQ)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -155,6 +172,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(263, 40);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -229,6 +247,9 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.buttonCalcGist);
+            this.tabPage2.Controls.Add(this.textBoxKGist);
+            this.tabPage2.Controls.Add(this.labelKGist);
             this.tabPage2.Controls.Add(this.chartF);
             this.tabPage2.Controls.Add(this.chartGist);
             this.tabPage2.Controls.Add(this.tableStat);
@@ -240,6 +261,33 @@
             this.tabPage2.Text = "Статистические характеристики";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // buttonCalcGist
+            // 
+            this.buttonCalcGist.Location = new System.Drawing.Point(284, 397);
+            this.buttonCalcGist.Name = "buttonCalcGist";
+            this.buttonCalcGist.Size = new System.Drawing.Size(175, 33);
+            this.buttonCalcGist.TabIndex = 12;
+            this.buttonCalcGist.Text = "Пересчитать гистограмму";
+            this.buttonCalcGist.UseVisualStyleBackColor = true;
+            this.buttonCalcGist.Click += new System.EventHandler(this.buttonCalcGist_Click);
+            // 
+            // textBoxKGist
+            // 
+            this.textBoxKGist.Location = new System.Drawing.Point(83, 404);
+            this.textBoxKGist.Name = "textBoxKGist";
+            this.textBoxKGist.Size = new System.Drawing.Size(116, 20);
+            this.textBoxKGist.TabIndex = 6;
+            // 
+            // labelKGist
+            // 
+            this.labelKGist.AutoSize = true;
+            this.labelKGist.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelKGist.Location = new System.Drawing.Point(52, 404);
+            this.labelKGist.Name = "labelKGist";
+            this.labelKGist.Size = new System.Drawing.Size(26, 20);
+            this.labelKGist.TabIndex = 5;
+            this.labelKGist.Text = "k=";
             // 
             // chartF
             // 
@@ -264,12 +312,12 @@
             // 
             chartArea2.Name = "ChartArea1";
             this.chartGist.ChartAreas.Add(chartArea2);
-            this.chartGist.Location = new System.Drawing.Point(18, 247);
+            this.chartGist.Location = new System.Drawing.Point(18, 237);
             this.chartGist.Name = "chartGist";
             series3.ChartArea = "ChartArea1";
             series3.Name = "Series1";
             this.chartGist.Series.Add(series3);
-            this.chartGist.Size = new System.Drawing.Size(452, 172);
+            this.chartGist.Size = new System.Drawing.Size(452, 161);
             this.chartGist.TabIndex = 2;
             // 
             // tableStat
@@ -351,6 +399,127 @@
             this.R.Name = "R";
             this.R.ReadOnly = true;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.labelR0);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.buttonCheckGip);
+            this.tabPage3.Controls.Add(this.labelAccept);
+            this.tabPage3.Controls.Add(this.labelFR0);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.tableQ);
+            this.tabPage3.Controls.Add(this.textBoxAlpha);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.textBoxKHyp);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(483, 438);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Проверка гипотезы о виде распределения";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
+            // 
+            // buttonCheckGip
+            // 
+            this.buttonCheckGip.Location = new System.Drawing.Point(281, 384);
+            this.buttonCheckGip.Name = "buttonCheckGip";
+            this.buttonCheckGip.Size = new System.Drawing.Size(175, 33);
+            this.buttonCheckGip.TabIndex = 11;
+            this.buttonCheckGip.Text = "Проверить гипотезу";
+            this.buttonCheckGip.UseVisualStyleBackColor = true;
+            this.buttonCheckGip.Click += new System.EventHandler(this.buttonCheckGip_Click);
+            // 
+            // labelAccept
+            // 
+            this.labelAccept.AutoSize = true;
+            this.labelAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelAccept.Location = new System.Drawing.Point(125, 343);
+            this.labelAccept.Name = "labelAccept";
+            this.labelAccept.Size = new System.Drawing.Size(0, 20);
+            this.labelAccept.TabIndex = 10;
+            // 
+            // labelFR0
+            // 
+            this.labelFR0.AutoSize = true;
+            this.labelFR0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFR0.Location = new System.Drawing.Point(191, 289);
+            this.labelFR0.Name = "labelFR0";
+            this.labelFR0.Size = new System.Drawing.Size(0, 20);
+            this.labelFR0.TabIndex = 9;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Location = new System.Drawing.Point(125, 288);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 20);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "F^(R0)=";
+            // 
+            // tableQ
+            // 
+            this.tableQ.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableQ.Location = new System.Drawing.Point(19, 143);
+            this.tableQ.Name = "tableQ";
+            this.tableQ.Size = new System.Drawing.Size(458, 68);
+            this.tableQ.TabIndex = 7;
+            // 
+            // textBoxAlpha
+            // 
+            this.textBoxAlpha.Location = new System.Drawing.Point(188, 71);
+            this.textBoxAlpha.Name = "textBoxAlpha";
+            this.textBoxAlpha.Size = new System.Drawing.Size(116, 20);
+            this.textBoxAlpha.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(125, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(57, 20);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "alpha=";
+            // 
+            // textBoxKHyp
+            // 
+            this.textBoxKHyp.Location = new System.Drawing.Point(188, 31);
+            this.textBoxKHyp.Name = "textBoxKHyp";
+            this.textBoxKHyp.Size = new System.Drawing.Size(116, 20);
+            this.textBoxKHyp.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(157, 31);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 20);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "k=";
+            // 
+            // labelR0
+            // 
+            this.labelR0.AutoSize = true;
+            this.labelR0.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelR0.Location = new System.Drawing.Point(166, 245);
+            this.labelR0.Name = "labelR0";
+            this.labelR0.Size = new System.Drawing.Size(0, 20);
+            this.labelR0.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(125, 246);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 20);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "R0=";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,9 +539,13 @@
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartF)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartGist)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tableStat)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tableQ)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,5 +582,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn D_S2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Me;
         private System.Windows.Forms.DataGridViewTextBoxColumn R;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label labelAccept;
+        private System.Windows.Forms.Label labelFR0;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView tableQ;
+        private System.Windows.Forms.TextBox textBoxAlpha;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxKHyp;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonCheckGip;
+        private System.Windows.Forms.TextBox textBoxKGist;
+        private System.Windows.Forms.Label labelKGist;
+        private System.Windows.Forms.Button buttonCalcGist;
+        private System.Windows.Forms.Label labelR0;
+        private System.Windows.Forms.Label label9;
     }
 }
